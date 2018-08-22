@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @enrollment.student %>
+</p>
+
+<p>
+  <strong>Cohort:</strong>
+  <%= @enrollment.cohort %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @enrollment.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @enrollment.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
+<%= link_to 'Back', enrollments_path %>
