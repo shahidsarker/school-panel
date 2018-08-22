@@ -5,5 +5,5 @@ class Student < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :age, numericality: { only_integer: true, greater_than: 0,
                                   less_than: 150 }
-  validates :avatar
+  # validates :avatar
 end
