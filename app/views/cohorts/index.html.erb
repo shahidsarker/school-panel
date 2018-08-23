@@ -22,8 +22,8 @@
         <td><%= cohort.name %></td>
         <td><%= cohort.start %></td>
         <td><%= cohort.end %></td>
-        <td><%= cohort.instructor %></td>
-        <td><%= cohort.course %></td>
+        <td><%= cohort.instructor.full_name %></td>
+        <td><%= cohort.course.name %></td>
         <td><%= cohort.created_at %></td>
         <td><%= cohort.updated_at %></td>
         <td><%= link_to 'Show', cohort %></td>

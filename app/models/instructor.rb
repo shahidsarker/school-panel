@@ -7,4 +7,7 @@ class Instructor < ApplicationRecord
   validates :salary, numericality: {only_integer: true, greater_than: 0}
   validates :education, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 4}
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
