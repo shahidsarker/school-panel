@@ -9,6 +9,7 @@
       <th>Hours</th>
       <th>Created at</th>
       <th>Updated at</th>
+      <th>Cohorts</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,9 @@
         <td><%= course.hours %></td>
         <td><%= course.created_at %></td>
         <td><%= course.updated_at %></td>
+        <td>
+          <%= course.cohorts.length %>
+        </td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
