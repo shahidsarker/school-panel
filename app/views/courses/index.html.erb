@@ -17,14 +17,26 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= course.name %></td>
+        <td><%= link_to "#{course.name}", course %></td>
         <td><%= course.hours %></td>
         <td><%= course.created_at %></td>
         <td><%= course.updated_at %></td>
         <td>
-          <%= course.cohorts.length %>
+          <%= "#{course.cohorts.length} cohorts" %>
+          <ul>
+            <% course.cohorts.each do |cohort| %>
+            <li>
+              <%= cohort.name %>
+              <%= link_to "#{cohort.name}", cohort %>
+              <%= cohort.instructor.full_name %>
+              <%= link_to 'blah', cohort.instructor %>
+            </li>
+            <% end %>
+
+          </ul>
+
         </td>
-        <td><%= link_to 'Show', course %></td>
+        <td></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
