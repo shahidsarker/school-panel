@@ -28,12 +28,14 @@
 
   <div class="field">
     <%= form.label :instructor_id %>
-    <%= form.text_field :instructor_id %>
+    <%#= form.text_field :instructor_id %>
+    <%= form.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :full_name) %>
   </div>
 
   <div class="field">
     <%= form.label :course_id %>
-    <%= form.text_field :course_id %>
+    <%#= form.text_field :course_id %>
+    <%= form.select :course_id, options_from_collection_for_select(Course.all, :id, :name) %>
   </div>
 
   <div class="field">

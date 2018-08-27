@@ -33,7 +33,8 @@
 
   <div class="field">
     <%= form.label :education %>
-    <%= form.number_field :education_level %>
+    <%#= form.number_field :education_level %>
+    <%= form.select :education, Instructor.educations.keys %>
   </div>
 
   <div class="field">
