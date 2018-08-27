@@ -10,4 +10,9 @@ class Instructor < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def edu_level(input=self.education)
+    education_levels = ['High School', "Bachelor's", "Master's", "PhD"]
+    education_levels[input-1]
+  end
 end

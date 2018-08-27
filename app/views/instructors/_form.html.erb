@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :education %>
-    <%= form.number_field :education %>
+    <%= form.number_field :education_level %>
   </div>
 
   <div class="field">
@@ -41,15 +41,15 @@
     <%= form.text_field :avatar %>
   </div>
 
-  <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :created_at %>
+    <%#= form.datetime_select :created_at %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= form.label :updated_at %>
-    <%= form.datetime_select :updated_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :updated_at %>
+    <%#= form.datetime_select :updated_at %>
+<!--  </div>-->
 
   <div class="actions">
     <%= form.submit %>
