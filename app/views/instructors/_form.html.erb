@@ -11,33 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :first_name %>
+  <div class="field form-group">
+    <%= form.label :first_name, :class => 'form-la' %>
     <%= form.text_field :first_name %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :last_name %>
     <%= form.text_field :last_name %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :age %>
     <%= form.number_field :age %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :salary %>
     <%= form.number_field :salary %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :education %>
     <%#= form.number_field :education_level %>
     <%= form.select :education, Instructor.educations.keys %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :avatar %>
     <%= form.text_field :avatar %>
   </div>
@@ -53,6 +53,6 @@
 <!--  </div>-->
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', :class => 'btn btn-primary' %>
   </div>
 <% end %>

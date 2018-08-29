@@ -13,23 +13,25 @@
 
   <div class="field">
     <%= form.label :student_id %>
-    <%= form.text_field :student_id %>
+    <%#= form.text_field :student_id %>
+    <%= form.select :student_id, options_from_collection_for_select(Student.all, :id, :full_name) %>
   </div>
 
   <div class="field">
     <%= form.label :cohort_id %>
     <%= form.text_field :cohort_id %>
+    <%= form.select :cohort_id, options_from_collection_for_select(Cohort.all, :id, :course, :name) %>
   </div>
 
-  <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :created_at %>
+    <%#= form.datetime_select :created_at %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= form.label :updated_at %>
-    <%= form.datetime_select :updated_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :updated_at %>
+    <%#= form.datetime_select :updated_at %>
+<!--  </div>-->
 
   <div class="actions">
     <%= form.submit %>

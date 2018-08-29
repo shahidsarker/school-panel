@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SchoolPanel</title>
+    <title>SchoolPanel yo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,23 @@
   </head>
 
   <body>
+  <div class="container">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/">Shahid's Tutoring Service</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav">
+        <%= active_link_to 'Cohorts', cohorts_path, :class => 'nav-item nav-link' %>
+        <%= active_link_to 'Instructors', instructors_path, :class => 'nav-item nav-link' %>
+        <%= active_link_to 'Students', students_path, :class => 'nav-item nav-link' %>
+        <%= active_link_to 'Enrollments', enrollments_path, :class => 'nav-item nav-link' %>
+      </div>
+    </div>
+  </nav>
+
     <%= yield %>
+  </div>
   </body>
 </html>
