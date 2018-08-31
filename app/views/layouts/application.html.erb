@@ -18,6 +18,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
+        <%= active_link_to 'Courses', courses_path, :class => 'nav-item nav-link' %>
         <%= active_link_to 'Cohorts', cohorts_path, :class => 'nav-item nav-link' %>
         <%= active_link_to 'Instructors', instructors_path, :class => 'nav-item nav-link' %>
         <%= active_link_to 'Students', students_path, :class => 'nav-item nav-link' %>

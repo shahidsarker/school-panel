@@ -23,7 +23,7 @@
 
   <div class="field form-group">
     <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.text_field :age %>
   </div>
 
   <div class="field form-group">
@@ -33,8 +33,7 @@
 
   <div class="field form-group">
     <%= form.label :education %>
-    <%#= form.number_field :education_level %>
-    <%= form.select :education, Instructor.educations.keys %>
+    <%= form.select :education, options_for_select(Instructor.educations.keys.map{|k| [Instructor::EDUCATION_MAP[k.to_sym], k]}) %>
   </div>
 
   <div class="field form-group">

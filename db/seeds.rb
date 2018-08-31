@@ -9,43 +9,58 @@
 
 require 'faker'
 
-date = Faker::Date
+# date = DateTime.new(2009,9,1,17)
 
 lorem = Faker::Lorem
 
 lflick = Faker::LoremFlickr
 
-courses = Course.create([
+
+puts 'adding courses'
+courses = Course.create!([
                             {name:Faker::Lorem.sentence,hours: rand(1..40)},
 
                             {name:Faker::Lorem.sentence,hours: rand(1..40)}])
 
-instructors = Instructor.create([{ first_name:Faker::Name.first_name,
-                                   last_name:Faker::Name.last_name,
-                                   salary: rand(60_000),
-                                   education: rand(1..4),
-                                   avatar: lflick.image,
-                                   age: date.birthday(18, 65) },
-                                 { first_name:Faker::Name.first_name,
-                                   last_name:Faker::Name.last_name,
-                                   salary: rand(60_000),
-                                   education: rand(1..4),
-                                   avatar: lflick.image,
-                                   age: date.birthday(18, 65) },
-                                 { first_name:Faker::Name.first_name,
-                                   last_name:Faker::Name.last_name,
-                                   salary: rand(60_000),
-                                   education: rand(1..4),
-                                   avatar: lflick.image,
-                                   age: date.birthday(18, 65) },
-                                 { first_name:Faker::Name.first_name,
-                                   last_name:Faker::Name.last_name,
-                                   salary: rand(60_000),
-                                   education: rand(1..4),
-                                   avatar: lflick.image,
-                                   age: date.birthday(18, 65) }])
+puts 'adding instructors'
 
-cohorts = Cohort.create([{ name: Faker::Lorem.word,
+# x = Instructor.create(first_name:'Shahid', last_name:'Sarker',salary: 60_000, education: 2, avatar: 'http://example.com/exam.jpg',           age: DateTime.now)
+#
+# pp x
+#
+# y = Student.create(first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: DateTime.new(2009,9,1,17) )
+# pp y
+
+instructors = Instructor.create!([{ first_name:Faker::Name.first_name,
+                                   last_name:Faker::Name.last_name,
+                                   salary: rand(100)*1000,
+                                   education: rand(1..4),
+                                   avatar: lflick.image,
+                                   age: DateTime.new(2009,9,1,17) },
+                                 { first_name:Faker::Name.first_name,
+                                   last_name:Faker::Name.last_name,
+                                   salary: rand(100)*1000,
+                                   education: rand(1..4),
+                                   avatar: lflick.image,
+                                   age: DateTime.new(2009,9,1,17) },
+                                 { first_name:Faker::Name.first_name,
+                                   last_name:Faker::Name.last_name,
+                                   salary: rand(100)*1000,
+                                   education: rand(1..4),
+                                   avatar: lflick.image,
+                                   age: DateTime.new(2009,9,1,17) },
+                                 { first_name:Faker::Name.first_name,
+                                   last_name:Faker::Name.last_name,
+                                   salary: rand(100)*1000,
+                                   education: rand(1..4),
+                                   avatar: lflick.image,
+                                   age: DateTime.new(2009,9,1,17) }])
+
+puts 'adding cohorts'
+cohorts = Cohort.create!([{ name: Faker::Lorem.word,
                            start: Faker::Time.between(DateTime.now - 45, DateTime.now - 30),
                            end:Faker::Time.between(DateTime.now - 30, DateTime.now),
                            instructor: instructors.sample,
@@ -62,44 +77,47 @@ cohorts = Cohort.create([{ name: Faker::Lorem.word,
                            course: courses.sample }
                         ])
 
-students = Student.create([{ first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) },
-                           { first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: date.birthday(18,65) }])
 
-enrollments = Enrollment.create([{ student: students.sample,
+puts 'adding students'
+students = Student.create!([{ first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) },
+                           { first_name: Faker::Name.first_name,
+                             last_name: Faker::Name.last_name,
+                             avatar: lflick.image,
+                             age: DateTime.new(2009,9,1,17) }])
+
+puts 'adding enrollments'
+enrollments = Enrollment.create!([{ student: students.sample,
                                    cohort: cohorts.sample },
                                  { student: students.sample,
                                    cohort: cohorts.sample },
@@ -115,4 +133,4 @@ enrollments = Enrollment.create([{ student: students.sample,
                                    cohort: cohorts.sample },
                                  { student: students.sample,
                                    cohort: cohorts.sample }
-                                ])
+                                ] )
