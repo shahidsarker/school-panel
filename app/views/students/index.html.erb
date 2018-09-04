@@ -1,38 +1,37 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Students</h1>
-
-<table class="table table-striped table-responsive">
+<h1>Students <%= link_to 'New Student', new_student_path, class: 'btn btn-success' %></h1>
+<table class="table">
   <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Age</th>
-      <th>Avatar</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Enrollments</th>
+    <th>Last Updated</th>
+    <th colspan="2"></th>
+  </tr>
   </thead>
-
   <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%#= student.age %>
-          <%= student.years %></td>
-        <td><%= student.avatar %></td>
-        <td><%= student.created_at %></td>
-        <td><%= student.updated_at %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= link_to image_tag(student.avatar, height: '32', width: '32'), student %> <%= link_to student.full_name, student %></td>
+      <td><%= student.years %></td>
+      <td>
+        <ul class="list-group list-group-flush">
+          <% if student.cohorts.length > 0 %>
+            <% student.cohorts.each do |cohort| %>
+              <li class="list-group-item"> <%= link_to abbreviate(cohort.course.name), cohort.course, :class => 'badge badge-primary' %> <%= link_to cohort.name, cohort %></li>
+            <% end %>
+          <% else %>
+            <li class="list-group-item"><%= student.cohorts.length %> cohorts</li>
+          <% end %>
+        </ul>
+      </td>
+      <td><%= student.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
+      <td><%= link_to 'Edit', edit_student_path(student),class: 'btn btn-success' %></td>
+      <td><%= link_to 'Destroy', student,class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Student', new_student_path %>

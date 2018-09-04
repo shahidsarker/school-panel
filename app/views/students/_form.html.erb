@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.label 'Birthday' %>
+    <%= form.date_field :age %>
   </div>
 
   <div class="field">
@@ -31,15 +31,15 @@
     <%= form.text_field :avatar %>
   </div>
 
-  <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :created_at %>
+    <%#= form.datetime_select :created_at %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= form.label :updated_at %>
-    <%= form.datetime_select :updated_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :updated_at %>
+    <%#= form.datetime_select :updated_at %>
+<!--  </div>-->
 
   <div class="actions">
     <%= form.submit %>

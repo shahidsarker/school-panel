@@ -1,46 +1,49 @@
 <p id="notice"><%= notice %></p>
-<h1>Instructors</h1>
-<%= link_to 'New Instructor', new_instructor_path, class: 'btn btn-success' %>
-<table class="table table-striped table-responsive">
+<h1>Instructors <%= link_to 'New Instructor', new_instructor_path, class: 'btn btn-success' %></h1>
+<table class="table">
   <thead>
   <tr>
-    <th></th>
     <th>Name</th>
     <th>Age</th>
     <th>Salary</th>
     <th>Education</th>
-    <th>Last Updated</th>
     <th>Cohorts</th>
+    <th>Last Updated</th>
     <th colspan="2"></th>
   </tr>
   </thead>
   <tbody>
   <% @instructors.each do |instructor| %>
     <tr>
-      <td><%= link_to image_tag(instructor.avatar, height: '32', width: '32'), instructor %></td>
-      <td><%= link_to instructor.full_name, instructor %></td>
-      <!--        <td><%#= instructor.last_name %></td>-->
+<!--      <td><%#= link_to image_tag(instructor.avatar, height: '32', width: '32'), instructor %></td>-->
+      <td><%= link_to image_tag(instructor.avatar, height: '32', width: '32'), instructor %> <%= link_to instructor.full_name, instructor %></td>
       <td><%= instructor.years %></td>
       <td><%= sprintf('%.2f', instructor.salary).gsub('.00', '').reverse.scan(/(\d*\.\d{1,3}|\d{1,3})/).join(',').reverse
       %></td>
 
       <td><%= instructor.education_label %></td>
-      <td><%= instructor.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
-      <!--        <td><%#= link_to 'Show', instructor %></td>-->
       <td>
-        <%= instructor.cohorts.length %> cohorts
+        <ul class="list-group list-group-flush">
         <% if instructor.cohorts.length > 0 %>
-          <ul class="list-group list-group-flush">
+
             <% instructor.cohorts.each do |cohort| %>
               <li class="list-group-item"><%= link_to abbreviate(cohort.course.name), cohort.course, :class => 'badge badge-primary' %> <%= link_to cohort.name, cohort %></li>
             <% end %>
-          </ul>
+
+          <% else  %>
+            <li class="list-group-item"><%= instructor.cohorts.length %> cohorts</li>
         <% end %>
+        </ul>
       </td>
+      <td><%= instructor.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
       <td><%= link_to 'Edit', edit_instructor_path(instructor), class: 'btn btn-primary' %></td>
       <td><%= link_to 'Delete', instructor, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+
+
+
 <%#= link_to 'New Instructor', new_instructor_path, class: 'btn btn-success' %>

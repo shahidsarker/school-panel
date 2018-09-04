@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cohorts</h1>
+<h1>Cohorts <%= link_to 'New Cohort', new_cohort_path, class: 'btn btn-success'  %></h1>
 
 <table class="table">
   <thead>
@@ -28,8 +28,8 @@
 <!--        <td><%#= cohort.created_at %></td>-->
         <td><%= cohort.updated_at %></td>
         <td><%= link_to 'Show', cohort %></td>
-        <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-        <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_cohort_path(cohort),class: 'btn btn-primary'  %></td>
+        <td><%= link_to 'Destroy', cohort,class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +37,6 @@
 
 <br>
 
-<%= link_to 'New Cohort', new_cohort_path %>
+
+
+

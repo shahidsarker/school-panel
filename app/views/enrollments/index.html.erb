@@ -32,5 +32,24 @@
 
 <br>
 
+<% @enrollments.each do |enrollment| %>
+  <ul>
+    <li><%= enrollment.cohort.name %></li>
+    <% enrollment.cohort.students do |student| %>
+    <%= student.full_name %>
+      <% end %>
+
+
+    <li><%= enrollment.student.full_name %></li>
+    <li><%= enrollment.created_at %></li>
+    <li><%= enrollment.updated_at %></li>
+    <li><%= link_to 'Show', enrollment %></li>
+    <li><%= link_to 'Edit', edit_enrollment_path(enrollment) %></li>
+    <li><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+<% end %>
+
+
+
 
 <%= link_to 'New Enrollment', new_enrollment_path %>
