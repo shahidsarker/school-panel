@@ -9,4 +9,9 @@ class Cohort < ApplicationRecord
   validates :end, presence: true
   validates :instructor_id, presence: true
   validates :course_id, presence: true
+
+
+  def concat_name
+    "#{self.course.name} - #{name}"
+  end
 end

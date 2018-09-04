@@ -37,7 +37,7 @@
       </td>
       <td><%= instructor.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
       <td><%= link_to 'Edit', edit_instructor_path(instructor), class: 'btn btn-primary' %></td>
-      <td><%= link_to 'Delete', instructor, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Fire', instructor, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   </tbody>

@@ -19,8 +19,9 @@
 
   <div class="field">
     <%= form.label :cohort_id %>
-    <%= form.text_field :cohort_id %>
-    <%= form.select :cohort_id, options_from_collection_for_select(Cohort.all, :id, :course, :name) %>
+    <%#= form.text_field :cohort_id %>
+    <%#= form.select :cohort_id, options_from_collection_for_select(Cohort.all, :id, :name) %>
+    <%= form.select :cohort_id, options_from_collection_for_select(Cohort.all, :id, 'concat_name') %>
   </div>
 
 <!--  <div class="field">-->

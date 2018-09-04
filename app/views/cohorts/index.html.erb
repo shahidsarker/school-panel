@@ -5,7 +5,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Cohort Name</th>
       <th>Course</th>
       <th>Start</th>
       <th>End</th>
@@ -20,8 +20,9 @@
   <tbody>
     <% @cohorts.each do |cohort| %>
       <tr>
-        <td><%= cohort.name %></td>
-        <td><%= cohort.course.name %></td>
+        <td><%= link_to cohort.name, cohort %></td>
+        <td><%= link_to cohort.course.name, cohort.course %>
+        </td>
         <td><%= cohort.start.strftime('%D') %></td>
         <td><%= cohort.end.strftime('%D') %></td>
         <td><%= cohort.instructor.last_name %></td>
@@ -29,7 +30,7 @@
         <td><%= cohort.updated_at %></td>
         <td><%= link_to 'Show', cohort %></td>
         <td><%= link_to 'Edit', edit_cohort_path(cohort),class: 'btn btn-primary'  %></td>
-        <td><%= link_to 'Destroy', cohort,class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', cohort,class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

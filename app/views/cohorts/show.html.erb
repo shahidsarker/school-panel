@@ -17,12 +17,12 @@
 
 <p>
   <strong>Instructor:</strong>
-  <%= @cohort.instructor %>
+  <%= link_to @cohort.instructor.full_name, @cohort.instructor %>
 </p>
 
 <p>
   <strong>Course:</strong>
-  <%= @cohort.course %>
+  <%= link_to @cohort.course.name, @cohort.course %>
 </p>
 
 <p>

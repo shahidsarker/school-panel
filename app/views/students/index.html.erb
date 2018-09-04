@@ -27,8 +27,8 @@
         </ul>
       </td>
       <td><%= student.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
-      <td><%= link_to 'Edit', edit_student_path(student),class: 'btn btn-success' %></td>
-      <td><%= link_to 'Destroy', student,class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      <td><%= link_to 'Edit', edit_student_path(student),class: 'btn btn-primary' %></td>
+      <td><%= link_to 'Expel', student,class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>
   <% end %>
   </tbody>

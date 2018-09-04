@@ -11,44 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field input-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, :html => {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :start %>
-    <%= form.datetime_select :start %>
+    <%= form.date_field :start, :html => {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :end %>
-    <%= form.datetime_select :end %>
+    <%= form.date_field :end, :html => {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :instructor_id %>
     <%#= form.text_field :instructor_id %>
-    <%= form.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :full_name) %>
+    <%= form.select :instructor_id, options_from_collection_for_select(Instructor.all, :id, :full_name), :html => {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :course_id %>
     <%#= form.text_field :course_id %>
-    <%= form.select :course_id, options_from_collection_for_select(Course.all, :id, :name) %>
+    <%= form.select :course_id, options_from_collection_for_select(Course.all, :id, :name), :html => {:class => 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :created_at %>
-    <%= form.datetime_select :created_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :created_at %>
+    <%#= form.datetime_select :created_at %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= form.label :updated_at %>
-    <%= form.datetime_select :updated_at %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :updated_at %>
+    <%#= form.datetime_select :updated_at %>
+<!--  </div>-->
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

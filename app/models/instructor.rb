@@ -17,13 +17,18 @@ class Instructor < ApplicationRecord
   }.freeze
 
   validates :first_name, :last_name, presence: true
-  # validates :age
   validates :salary, numericality: {only_integer: true, greater_than: 0}
-  # validates :education, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 4}
   validates :education, :inclusion => {:in => EDUCATION_MAP.keys.map(&:to_s)}
 
   # validates :education, :inclusion => {:in => EDUCATION_MAP.keys.map { |k| k.to_s } }
 
+  validate :age_calc
+  def age_calc
+    if self.age
+      errors.add(:age, 'You must be 13 years or older.') if self.age > 13.years.ago.to_date
+      errors.add(:age, "That's too old.") if self.age < 150.years.ago.to_date
+    end
+  end
 
   def full_name
     "#{first_name} #{last_name}"
