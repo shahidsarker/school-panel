@@ -1,23 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @student.age %>
-</p>
 
 <p>
   <strong>Avatar:</strong>
-  <%= @student.avatar %>
+  <%#=image_tag(@student.avatar) %>
 </p>
 
 <p>
@@ -26,9 +12,40 @@
 </p>
 
 <p>
-  <strong>Updated at:</strong>
+  <strong>Last Updated</strong>
   <%= @student.updated_at %>
 </p>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<div class="row justify-content-center">
+<div class="card center" style="width: 25rem;">
+  <%=image_tag(@student.avatar, class: 'card-img-top') %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @student.full_name %></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Age:</strong> <%= @student.years %></li>
+    <li class="list-group-item"><strong>Last Updated</strong> <%= @student.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></li>
+    <li class="list-group-item">
+      <ul class="list-group list-group-flush">
+        <% if @student.cohorts.length > 0 %>
+          <% @student.cohorts.each do |cohort| %>
+            <li class="list-group-item"> <%= link_to abbreviate(cohort.course.name), cohort.course, :class => 'badge badge-primary' %> <%= link_to cohort.name, cohort %></li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item"><%= @student.cohorts.length %> cohorts</li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <div class="card-body">
+    <%= link_to 'Edit', edit_student_path(@student), class: 'card-link badge badge-primary'  %>
+    <%#= link_to 'Back', students_path, class: 'card-link'  %>
+
+    <%= link_to 'Expel', @student, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}, class: 'card-link badge badge-danger' %>
+  </div>
+</div>
+
+</div>
+
+<br>

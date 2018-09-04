@@ -1,48 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses <%= link_to 'New Course', new_course_path, class: 'btn btn-success'  %></h1>
+<h1>Courses <%= link_to 'New Course', new_course_path, class: 'btn btn-success' %></h1>
 
 <table class="table">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Hours</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th>Cohorts</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Hours</th>
+    <th>Students</th>
+    <th>Cohorts</th>
+    <th>Updated at</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= link_to "#{course.name}", course %></td>
-        <td><%= course.hours %></td>
-        <td><%= course.created_at %></td>
-        <td><%= course.updated_at %></td>
-        <td>
-
-          <ul class="list-group list-group-flush">
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= link_to "#{course.name}", course %></td>
+      <td><%= course.hours %></td>
+      <td><%= course.total_students %></td>
+      <td>
+        <ul class="list-group list-group-flush">
           <% if course.cohorts.length > 0 %>
-
-              <% course.cohorts.each do |cohort| %>
-                <li class="list-group-item"><%= link_to cohort.name, cohort %> - <%= link_to cohort.instructor.full_name, cohort.instructor %></li>
-              <% end %>
-
+            <% course.cohorts.each do |cohort| %>
+              <li class="list-group-item"><%= link_to cohort.name, cohort %>
+                - <%= link_to cohort.instructor.full_name, cohort.instructor %></li>
+            <% end %>
           <% else %>
-              <li class="list-group-item"><%= "#{course.cohorts.length} cohorts" %></li>
+            <li class="list-group-item"><%= "#{course.cohorts.length} cohorts" %></li>
           <% end %>
-          </ul>
-
-
-
-
-        </td>
-        <td></td>
-        <td><%= link_to 'Edit', edit_course_path(course),class: 'btn btn-primary'  %></td>
-        <td><%= link_to 'Destroy', course,class: 'btn btn-danger' , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+        </ul>
+      </td>
+      <td><%= course.updated_at %></td>
+      <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-primary' %></td>
+      <td><%= link_to 'Destroy', course, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
