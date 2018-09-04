@@ -11,8 +11,8 @@
       <th>End</th>
       <th>Instructor</th>
 
-      <th>Created at</th>
-      <th>Updated at</th>
+<!--      <th>Created at</th>-->
+      <th>Last Updated</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,8 +24,8 @@
         <td><%= cohort.course.name %></td>
         <td><%= cohort.start.strftime('%D') %></td>
         <td><%= cohort.end.strftime('%D') %></td>
-        <td><%= cohort.instructor.full_name %></td>
-        <td><%= cohort.created_at %></td>
+        <td><%= cohort.instructor.last_name %></td>
+<!--        <td><%#= cohort.created_at %></td>-->
         <td><%= cohort.updated_at %></td>
         <td><%= link_to 'Show', cohort %></td>
         <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>

@@ -26,7 +26,6 @@
           <ul>
             <% course.cohorts.each do |cohort| %>
             <li>
-              <%= link_to abbreviate(cohort.course.name), cohort.course, :class => 'badge badge-primary' %>
               <%= link_to "#{cohort.name}", cohort %> -
               <%= link_to cohort.instructor.full_name, cohort.instructor %>
             </li>

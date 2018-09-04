@@ -2,13 +2,6 @@ class Instructor < ApplicationRecord
   has_many :cohorts
   has_many :courses, through: :cohorts
 
-  # enum education: {
-  #     1:'High School',
-  #     2:"Bachelor's",
-  #     3:"Master's",
-  #     4:"PhD"
-  # }
-
   enum education: {
       high_school:1,
       bachelors:2,
@@ -38,5 +31,10 @@ class Instructor < ApplicationRecord
 
   def education_label
     EDUCATION_MAP[education.to_sym]
+  end
+
+  def years
+    now = Time.now.utc.to_date
+    now.year - age.year - ((now.month > age.month || (now.month == age.month && now.day >= age.day)) ? 0 : 1)
   end
 end
