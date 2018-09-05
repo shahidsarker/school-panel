@@ -1,21 +1,4 @@
 <p id="notice"><%= notice %></p>
-
-
-<p>
-  <strong>Avatar:</strong>
-  <%#=image_tag(@student.avatar) %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @student.created_at %>
-</p>
-
-<p>
-  <strong>Last Updated</strong>
-  <%= @student.updated_at %>
-</p>
-
 <div class="row justify-content-center">
 <div class="card center" style="width: 25rem;">
   <%=image_tag(@student.avatar, class: 'card-img-top') %>
