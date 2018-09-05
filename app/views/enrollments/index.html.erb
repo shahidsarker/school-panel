@@ -7,7 +7,6 @@
     <tr>
       <th>Cohort</th>
       <th>Student</th>
-      <th>Created at</th>
       <th>Updated at</th>
       <th colspan="3"></th>
     </tr>
@@ -20,8 +19,7 @@
 <!--        <td><%#= enrollment.student.cohorts %></td>-->
         <td><%= enrollment.cohort.name %></td>
         <td><%= enrollment.student.full_name %></td>
-        <td><%= enrollment.created_at %></td>
-        <td><%= enrollment.updated_at %></td>
+        <td><%= enrollment.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
         <td><%= link_to 'Show', enrollment %></td>
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

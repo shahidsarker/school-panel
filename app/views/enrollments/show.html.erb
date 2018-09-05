@@ -2,22 +2,22 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @enrollment.student %>
+  <%= link_to @enrollment.student.full_name, @enrollment.student %>
 </p>
 
 <p>
   <strong>Cohort:</strong>
-  <%= @enrollment.cohort %>
+  <%= link_to @enrollment.cohort.name,  @enrollment.cohort %>
 </p>
 
 <p>
   <strong>Created at:</strong>
-  <%= @enrollment.created_at %>
+  <%= @enrollment.created_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <p>
   <strong>Updated at:</strong>
-  <%= @enrollment.updated_at %>
+  <%= @enrollment.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |

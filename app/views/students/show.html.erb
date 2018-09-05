@@ -3,12 +3,10 @@
 <div class="card center" style="width: 25rem;">
   <%=image_tag(@student.avatar, class: 'card-img-top') %>
   <div class="card-body">
-    <h5 class="card-title"><%= @student.full_name %></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h4 class="card-title"><%= @student.full_name %></h4>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>Age:</strong> <%= @student.years %></li>
-    <li class="list-group-item"><strong>Last Updated</strong> <%= @student.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></li>
     <li class="list-group-item">
       <ul class="list-group list-group-flush">
         <% if @student.cohorts.length > 0 %>
@@ -20,12 +18,11 @@
         <% end %>
       </ul>
     </li>
+    <li class="list-group-item"><strong>Last Updated</strong> <%= @student.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></li>
   </ul>
   <div class="card-body">
-    <%= link_to 'Edit', edit_student_path(@student), class: 'card-link badge badge-primary'  %>
-    <%#= link_to 'Back', students_path, class: 'card-link'  %>
-
-    <%= link_to 'Expel', @student, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'}, class: 'card-link badge badge-danger' %>
+    <%= link_to 'Edit', edit_student_path(@student), class: 'card-link btn btn-primary'  %>
+    <%= link_to 'Expel', @student, method: :delete, data: {confirm: 'Are you sure?'}, class: 'card-link btn btn-danger' %>
   </div>
 </div>
 
