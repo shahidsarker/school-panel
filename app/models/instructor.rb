@@ -1,5 +1,5 @@
 class Instructor < ApplicationRecord
-  has_many :cohorts, dependent: :nullify
+  has_many :cohorts, dependent: :destroy
   has_many :courses, through: :cohorts
 
   enum education: {

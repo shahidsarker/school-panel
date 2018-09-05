@@ -1,7 +1,7 @@
 class Cohort < ApplicationRecord
   belongs_to :instructor
   belongs_to :course
-  has_many :enrollments
+  has_many :enrollments, dependent: :destroy
   has_many :students, through: :enrollments
 
   validates :name, presence: true
