@@ -32,7 +32,7 @@
           <% end %>
         </ul>
       </td>
-      <td><%= course.updated_at %></td>
+      <td><%= course.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
       <td><%= link_to 'Edit', edit_course_path(course), class: 'btn btn-primary' %></td>
       <td><%= link_to 'Destroy', course, class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %></td>
     </tr>

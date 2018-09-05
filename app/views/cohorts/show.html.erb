@@ -7,12 +7,12 @@
 
 <p>
   <strong>Start:</strong>
-  <%= @cohort.start %>
+  <%= @cohort.start.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @cohort.end %>
+  <%= @cohort.end.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <p>
@@ -27,12 +27,12 @@
 
 <p>
   <strong>Created at:</strong>
-  <%= @cohort.created_at %>
+  <%= @cohort.created_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <p>
   <strong>Updated at:</strong>
-  <%= @cohort.updated_at %>
+  <%= @cohort.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |

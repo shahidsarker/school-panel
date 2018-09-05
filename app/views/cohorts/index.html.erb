@@ -24,7 +24,7 @@
         <td><%= cohort.start.strftime('%D') %></td>
         <td><%= cohort.end.strftime('%D') %></td>
         <td><%= cohort.instructor.last_name %></td>
-        <td><%= cohort.updated_at %></td>
+        <td><%= cohort.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></td>
         <td><%= link_to 'Edit', edit_cohort_path(cohort),class: 'btn btn-primary'  %></td>
         <td><%= link_to 'Delete', cohort,class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

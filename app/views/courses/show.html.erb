@@ -12,12 +12,12 @@
 
 <p>
   <strong>Created at:</strong>
-  <%= @course.created_at %>
+  <%= @course.created_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <p>
   <strong>Updated at:</strong>
-  <%= @course.updated_at %>
+  <%= @course.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
