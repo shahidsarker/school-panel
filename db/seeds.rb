@@ -32,9 +32,6 @@ end
 
 puts 'people array created'
 
-
-
-
 puts 'adding courses'
 courses = Course.create!([
                              {name: Faker::Educator.university, hours: rand(1..40)},
@@ -42,60 +39,7 @@ courses = Course.create!([
                              {name: Faker::Educator.university, hours: rand(1..40)}])
 
 puts 'adding instructors'
-
-# x = Instructor.create(first_name:'Shahid', last_name:'Sarker',salary: 60_000, education: 2, avatar: 'http://example.com/exam.jpg',           age: DateTime.now)
-#
-# pp x
-#
-# y = Student.create(first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: DateTime.new(2009,9,1,17) )
-# pp y
-#
-# instructors = Instructor.create!([{first_name: Faker::Name.first_name,
-#                                    last_name: Faker::Name.last_name,
-#                                    salary: rand(100) * 1000,
-#                                    education: rand(1..4),
-#                                    avatar: lflick.image,
-#                                    age: Faker::Date.birthday(18, 65)},
-#                                   {first_name: Faker::Name.first_name,
-#                                    last_name: Faker::Name.last_name,
-#                                    salary: rand(100) * 1000,
-#                                    education: rand(1..4),
-#                                    avatar: lflick.image,
-#                                    age: Faker::Date.birthday(18, 65)},
-#                                   {first_name: Faker::Name.first_name,
-#                                    last_name: Faker::Name.last_name,
-#                                    salary: rand(100) * 1000,
-#                                    education: rand(1..4),
-#                                    avatar: lflick.image,
-#                                    age: Faker::Date.birthday(18, 65)},
-#                                   {first_name: Faker::Name.first_name,
-#                                    last_name: Faker::Name.last_name,
-#                                    salary: rand(100) * 1000,
-#                                    education: rand(1..4),
-#                                    avatar: lflick.image,
-#                                    age: Faker::Date.birthday(18, 65)}])
-
 instructors = []
-
-
-# 4.times do |x|
-#   instructor = Instructor.create!(first_name: Faker::Name.first_name,
-#                                   last_name: Faker::Name.last_name,
-#                                   salary: rand(1..100) * 1000,
-#                                   education: rand(1..4),
-#                                   avatar: lflick.image,
-#                                   age: Faker::Date.birthday(18, 65)
-#   )
-#   pp instructor
-#
-#   instructors.push(instructor)
-# end
-
-
-
 4.times do |x|
   popped_person = people.pop
   puts 'popped person'
@@ -103,7 +47,6 @@ instructors = []
                                  last_name: popped_person[2],
                                  salary: rand(1..100) * 1000,
                                  education: rand(1..4),
-                                 avatar: nil,
                                  age: Faker::Date.birthday(18, 65)
   )
   puts 'created instructor'
@@ -136,67 +79,26 @@ cohorts = Cohort.create!([{name: Faker::Lorem.word,
 
 
 puts 'adding students'
-
 students = []
-# students = Student.create!([{first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)},
-#                             {first_name: Faker::Name.first_name,
-#                              last_name: Faker::Name.last_name,
-#                              avatar: lflick.image,
-#                              age: Faker::Date.birthday(18, 65)}])
-
-
-
 (people.length - 4).times do |x|
   popped_person = people.pop
   puts 'popped person'
   student = Student.create!(first_name: popped_person[1],
-                                  last_name: popped_person[2],
-                                  avatar: nil,
-                                  age: Faker::Date.birthday(18, 65)
+                            last_name: popped_person[2],
+                            age: Faker::Date.birthday(18, 65)
   )
   puts 'created instructor'
   filename = open(popped_person[0])
   student.photo.attach(io: filename,
-                          filename: popped_person[0].sub('https://tinyfac.es/data/avatars/', '')
+                       filename: popped_person[0].sub('https://tinyfac.es/data/avatars/', '')
   )
   puts 'attached photo to student'
   students.push(student)
   puts 'pushed student to students array'
 end
 
-
 puts 'adding enrollments'
+
 enrollments = Enrollment.create!([{student: students.sample,
                                    cohort: cohorts.sample},
                                   {student: students.sample,
