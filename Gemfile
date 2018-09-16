@@ -68,4 +68,6 @@ gem 'devise'
 gem 'active_link_to'
 gem 'jquery-rails'
 gem 'httparty'
-gem 'json'
+# gem 'json'
+#
+gem 'rubyzip', '~> 1.2.2'
