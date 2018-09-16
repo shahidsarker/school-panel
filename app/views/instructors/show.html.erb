@@ -2,14 +2,17 @@
 
 <div class="row justify-content-center">
   <div class="card center" style="width: 25rem;">
-    <%=image_tag(@instructor.avatar, class: 'card-img-top') %>
+      <%= image_tag(@instructor.photo, class: 'card-img-top') %>
+
     <div class="card-body">
       <h5 class="card-title"><%= @instructor.full_name %></h5>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><strong>Age:</strong> <%= @instructor.years %></li>
       <li class="list-group-item"><strong>Education:</strong> <%= @instructor.education_label %></li>
-      <li class="list-group-item"><strong>Salary:</strong> $<%= sprintf('%.2f', @instructor.salary).gsub('.00', '').reverse.scan(/(\d*\.\d{1,3}|\d{1,3})/).join(',').reverse %></li>
+      <li class="list-group-item"><strong>Salary:</strong>
+        $<%= sprintf('%.2f', @instructor.salary).gsub('.00', '').reverse.scan(/(\d*\.\d{1,3}|\d{1,3})/).join(',').reverse %>
+      </li>
 
       <li class="list-group-item">
         <ul class="list-group list-group-flush">
@@ -22,58 +25,13 @@
           <% end %>
         </ul>
       </li>
-      <li class="list-group-item"><strong>Last Updated</strong> <%= @instructor.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %></li>
+      <li class="list-group-item"><strong>Last
+        Updated</strong> <%= @instructor.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime('%D %I:%M:%S %p') %>
+      </li>
     </ul>
     <div class="card-body">
-      <%= link_to 'Edit', edit_instructor_path(@instructor), class: 'card-link btn btn-primary'  %>
+      <%= link_to 'Edit', edit_instructor_path(@instructor), class: 'card-link btn btn-primary' %>
       <%= link_to 'Fire', @instructor, class: 'card-link btn btn-danger', method: :delete, data: {confirm: 'Are you sure you want to fire them?'} %>
     </div>
   </div>
 </div>
-
-
-
-
-
-<p>
-  <strong>First name:</strong>
-  <%= @instructor.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @instructor.last_name %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @instructor.age %>
-</p>
-
-<p>
-  <strong>Salary:</strong>
-  <%= @instructor.salary %>
-</p>
-
-<p>
-  <strong>Education:</strong>
-  <%= @instructor.education_label %>
-</p>
-
-<p>
-  <strong>Avatar:</strong>
-  <%= @instructor.avatar %>
-</p>
-
-<p>
-  <strong>Created at:</strong>
-  <%= @instructor.created_at %>
-</p>
-
-<p>
-  <strong>Updated at:</strong>
-  <%= @instructor.updated_at %>
-</p>
-
-<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
-<%= link_to 'Back', instructors_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'courses#index'
   devise_for :users
   resources :enrollments
   resources :cohorts
@@ -15,6 +16,5 @@ Rails.application.routes.draw do
     # resources :instructors
     # resources :students
   end
-  root 'courses#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
