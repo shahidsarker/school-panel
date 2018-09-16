@@ -1,10 +1,10 @@
 class Student < ApplicationRecord
   has_many :enrollments, dependent: :destroy
   has_many :cohorts, through: :enrollments
+  has_one_attached :photo
 
 
   validates :first_name, :last_name, presence: true
-  validates :avatar, presence: true
 
   validate :age_calc
 

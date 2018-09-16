@@ -26,20 +26,10 @@
     <%= form.date_field :age %>
   </div>
 
-  <div class="field">
-    <%= form.label :avatar %>
-    <%= form.text_field :avatar %>
+  <div class="field form-group">
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
   </div>
-
-<!--  <div class="field">-->
-    <%#= form.label :created_at %>
-    <%#= form.datetime_select :created_at %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :updated_at %>
-    <%#= form.datetime_select :updated_at %>
-<!--  </div>-->
 
   <div class="actions">
     <%= form.submit %>

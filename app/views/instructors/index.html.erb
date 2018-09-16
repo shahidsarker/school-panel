@@ -15,8 +15,9 @@
   <tbody>
   <% @instructors.each do |instructor| %>
     <tr>
-<!--      <td><%#= link_to image_tag(instructor.avatar, height: '32', width: '32'), instructor %></td>-->
-      <td><%= link_to image_tag(instructor.avatar, height: '32', width: '32'), instructor %> <%= link_to instructor.full_name, instructor %></td>
+      <td>
+          <%= link_to image_tag(instructor.photo, height: '32', width: '32'), instructor %>
+        <%= link_to instructor.full_name, instructor %></td>
       <td><%= instructor.years %></td>
       <td>$<%= sprintf('%.2f', instructor.salary).gsub('.00', '').reverse.scan(/(\d*\.\d{1,3}|\d{1,3})/).join(',').reverse %></td>
 

@@ -1,6 +1,7 @@
 class Instructor < ApplicationRecord
   has_many :cohorts, dependent: :destroy
   has_many :courses, through: :cohorts
+  has_one_attached :photo
 
   enum education: {
       high_school:1,
