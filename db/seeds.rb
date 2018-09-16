@@ -136,42 +136,65 @@ cohorts = Cohort.create!([{name: Faker::Lorem.word,
 
 
 puts 'adding students'
-students = Student.create!([{first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)},
-                            {first_name: Faker::Name.first_name,
-                             last_name: Faker::Name.last_name,
-                             avatar: lflick.image,
-                             age: Faker::Date.birthday(18, 65)}])
+
+students = []
+# students = Student.create!([{first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)},
+#                             {first_name: Faker::Name.first_name,
+#                              last_name: Faker::Name.last_name,
+#                              avatar: lflick.image,
+#                              age: Faker::Date.birthday(18, 65)}])
+
+
+
+(people.length - 4).times do |x|
+  popped_person = people.pop
+  puts 'popped person'
+  student = Student.create!(first_name: popped_person[1],
+                                  last_name: popped_person[2],
+                                  avatar: nil,
+                                  age: Faker::Date.birthday(18, 65)
+  )
+  puts 'created instructor'
+  filename = open(popped_person[0])
+  student.photo.attach(io: filename,
+                          filename: popped_person[0].sub('https://tinyfac.es/data/avatars/', '')
+  )
+  puts 'attached photo to student'
+  students.push(student)
+  puts 'pushed student to students array'
+end
+
 
 puts 'adding enrollments'
 enrollments = Enrollment.create!([{student: students.sample,

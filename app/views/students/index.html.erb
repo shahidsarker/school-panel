@@ -13,7 +13,7 @@
   <tbody>
   <% @students.each do |student| %>
     <tr>
-      <td><%= link_to image_tag(student.avatar, height: '32', width: '32'), student %> <%= link_to student.full_name, student %></td>
+      <td><%= link_to image_tag(student.photo, height: '32', width: '32'), student %> <%= link_to student.full_name, student %></td>
       <td><%= student.years %></td>
       <td>
         <ul class="list-group list-group-flush">
