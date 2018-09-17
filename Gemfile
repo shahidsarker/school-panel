@@ -61,13 +61,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
-gem 'faker'
+gem 'active_link_to'
 gem 'bootstrap', '~> 4.1.3'
 gem 'devise'
-gem 'active_link_to'
-gem 'jquery-rails'
+gem 'faker'
+gem 'google-cloud-storage'
 gem 'httparty'
-# gem 'json'
-#
+gem 'jquery-rails'
 gem 'rubyzip', '~> 1.2.2'
